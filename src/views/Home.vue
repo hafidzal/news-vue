@@ -5,9 +5,11 @@
     <h3>{{ headline }}</h3>
     <v-layout row align-center class="pl-6 pr-6">
       <div v-for="article in news" :key="article.title">
-        <router-link :to="`/${article.title}`">
+          <v-container>
           <NewsToolbar></NewsToolbar>
-          <v-card class="my-3" hover>
+          <v-card hover>
+            <router-link style="text-decoration: none;"
+              :to="`/${article.title}`">
             <v-container fill-height fluid>
                 <v-layout>
                   <v-flex xs12 align-end d-flex>
@@ -18,8 +20,9 @@
               <v-card-text>
                 {{ article.description }}
               </v-card-text>
+            </router-link>
           </v-card>
-        </router-link>
+          </v-container>
       </div>
     </v-layout>
   </v-app>
