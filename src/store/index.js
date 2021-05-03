@@ -12,6 +12,7 @@ export default new Vuex.Store({
     news: 'hehe',
     currentHeadline: 'this is headline',
     visitedHeadline: [],
+    selectedHeadline: '',
   },
   mutations: {
     setVisitedHeadline(state, payload) {
@@ -21,6 +22,13 @@ export default new Vuex.Store({
     setNews(state, payload) {
       state.news = payload;
     },
+    setSelectedHeadline(state, payload) {
+      state.selectedHeadline = payload;
+    },
+    changeHeadlineTitle(state, payload) {
+      const newHeadlineTitle = state.news.find((a) => a.title === state.selectedHeadline);
+      newHeadlineTitle.title = payload;
+    },
   },
   actions: {
     // for async
@@ -29,11 +37,18 @@ export default new Vuex.Store({
       const news = await api.json();
       state.commit('setNews', news.articles);
     },
+    async setSelectedHeadline(state, payload) {
+      state.commit('setSelectedHeadline', payload);
+    },
+    async changeHeadlineTitle(state, payload) {
+      state.commit('changeHeadlineTitle', payload);
+    },
   },
   modules: {
   },
   getters: {
     getCurrentHeadline: (state) => state.currentHeadline,
     getNews: (state) => state.news,
+    getSelectedHeadline: (state) => state.selectedHeadline,
   },
 });

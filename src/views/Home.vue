@@ -6,9 +6,9 @@
     <v-layout row align-center class="pl-6 pr-6">
       <div v-for="article in news" :key="article.title">
           <v-container>
-          <NewsToolbar></NewsToolbar>
+          <NewsToolbar :selectedHeadline="article"></NewsToolbar>
           <v-card hover>
-            <router-link style="text-decoration: none;"
+            <router-link style="text-decoration : none;"
               :to="`/${article.title}`">
             <v-container fill-height fluid>
                 <v-layout>

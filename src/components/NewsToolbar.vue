@@ -35,6 +35,7 @@
             color="black"
             v-bind="attrs"
             v-on="on"
+            @click="setSelectedHeadline"
             >
             mdi-pencil
         </v-icon>
@@ -46,14 +47,28 @@
 
         <v-divider></v-divider>
 
+        <v-card-text>
+            <v-container>
+                <v-row>
+                    <v-col cols="12">
+                        <v-text-field
+                            single-line
+                            filled
+                            v-model="title"
+                        ></v-text-field>
+                    </v-col>
+                </v-row>
+            </v-container>
+        </v-card-text>
+
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
             color="primary"
             text
-            @click="dialog = false"
+            @click="changeHeadlineTitle"
           >
-            I accept
+            Change
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -63,11 +78,24 @@
 
 <script>
 export default {
+  props: {
+    selectedHeadline: String,
+  },
   data() {
     return {
       drawer: true,
       dialog: false,
+      changeHeadline: 'hehe',
+      title: '',
     };
+  },
+  methods: {
+    setSelectedHeadline() {
+      this.$store.dispatch('setSelectedHeadline', this.selectedHeadline.title);
+    },
+    changeHeadlineTitle() {
+      this.$store.dispatch('changeHeadlineTitle', this.title);
+    },
   },
 };
 </script>
