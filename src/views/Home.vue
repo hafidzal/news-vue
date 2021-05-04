@@ -1,9 +1,12 @@
 <template>
   <v-app class="home">
-    <h1>{{ angka }}</h1>
-    <v-btn @click="added"> add </v-btn>
-    <h3>{{ headline }}</h3>
-    <v-layout row align-center class="pl-6 pr-6">
+    <v-layout row align-center class="pl-6 pr-6 pt-6">
+      <v-container>
+        <FilterBar></FilterBar>
+      </v-container>
+      <v-container>
+        <VisitedHeadline></VisitedHeadline>
+      </v-container>
       <div v-for="article in news" :key="article.title">
           <v-container>
           <NewsToolbar :selectedHeadline="article"></NewsToolbar>
@@ -33,11 +36,15 @@
 <script>
 // @ is an alias to /src
 import NewsToolbar from '@/components/NewsToolbar.vue';
+import VisitedHeadline from '@/components/VisitedHeadline.vue';
+import FilterBar from '@/components/FilterBar.vue';
 
 export default {
   name: 'Home',
   components: {
     NewsToolbar,
+    VisitedHeadline,
+    FilterBar,
   },
   data() {
     return {

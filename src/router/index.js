@@ -17,6 +17,12 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/Detail.vue'),
   },
   {
+    path: '/result/:keyword',
+    name: 'Result',
+    props: true,
+    component: () => import(/* webpackChunkName: "about" */ '../views/SearchResult.vue'),
+  },
+  {
     path: '/visited',
     name: 'Visited',
     // component: Visited,
