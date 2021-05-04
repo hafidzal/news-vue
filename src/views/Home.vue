@@ -7,20 +7,22 @@
       <div v-for="article in news" :key="article.title">
           <v-container>
           <NewsToolbar :selectedHeadline="article"></NewsToolbar>
-          <v-card hover>
-            <router-link style="text-decoration : none;"
-              :to="`/${article.title}`">
-            <v-container fill-height fluid>
-                <v-layout>
-                  <v-flex xs12 align-end d-flex>
-                    <span class="headline">{{ article.title }}</span>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-              <v-card-text>
-                {{ article.description }}
-              </v-card-text>
-            </router-link>
+          <v-card>
+            <v-container @click="setVisitedHeadline(article)">
+              <router-link style="text-decoration : none;"
+                :to="`/${article.title}`">
+              <v-container fill-height fluid>
+                  <v-layout>
+                    <v-flex xs12 align-end d-flex>
+                      <span class="headline">{{ article.title }}</span>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+                <v-card-text>
+                  {{ article.description }}
+                </v-card-text>
+              </router-link>
+            </v-container>
           </v-card>
           </v-container>
       </div>
@@ -54,6 +56,9 @@ export default {
   methods: {
     added() {
       this.angka += 1;
+    },
+    setVisitedHeadline(article) {
+      this.$store.dispatch('setVisitedHeadline', article.title);
     },
   },
 };

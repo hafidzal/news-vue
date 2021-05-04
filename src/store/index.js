@@ -9,8 +9,8 @@ const headers = { Accept: 'application/json' };
 
 export default new Vuex.Store({
   state: {
-    news: 'hehe',
-    currentHeadline: 'this is headline',
+    news: '',
+    currentHeadline: '',
     visitedHeadline: [],
     selectedHeadline: '',
   },
@@ -43,6 +43,9 @@ export default new Vuex.Store({
     async changeHeadlineTitle(state, payload) {
       state.commit('changeHeadlineTitle', payload);
     },
+    async setVisitedHeadline(state, payload) {
+      state.commit('setVisitedHeadline', payload);
+    },
   },
   modules: {
   },
@@ -50,5 +53,6 @@ export default new Vuex.Store({
     getCurrentHeadline: (state) => state.currentHeadline,
     getNews: (state) => state.news,
     getSelectedHeadline: (state) => state.selectedHeadline,
+    getVisitedHeadline: (state) => state.visitedHeadline,
   },
 });
