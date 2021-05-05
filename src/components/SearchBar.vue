@@ -16,7 +16,6 @@
 export default {
   methods: {
     handleSearch(e) {
-    //   alert(e.target.value);
       this.$store.dispatch('setSearch', e.target.value)
         .then(() => {
           this.$router.push(`/result/${e.target.value}`);

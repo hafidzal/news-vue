@@ -85,7 +85,7 @@ export default {
     return {
       drawer: true,
       dialog: false,
-      changeHeadline: 'hehe',
+      changeHeadline: '',
       title: '',
     };
   },

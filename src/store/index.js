@@ -1,10 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
 
 Vue.use(Vuex);
 
-const url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=099148be22804e849a0c6fe022b7cf5e';
-const urlListSource = 'https://newsapi.org/v2/sources?apiKey=099148be22804e849a0c6fe022b7cf5e';
+const token = '1f5aea3b8fa34823aa7a8a82d2ee4d3a';
+const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${token}`;
+const urlListSource = `https://newsapi.org/v2/sources?apiKey=${token}`;
 const headers = { Accept: 'application/json' };
 
 export default new Vuex.Store({
@@ -15,6 +17,8 @@ export default new Vuex.Store({
     selectedHeadline: '',
     searchResult: [],
     filterList: [],
+    filteredResult: '',
+    source: '',
   },
   mutations: {
     setVisitedHeadline(state, payload) {
@@ -22,7 +26,9 @@ export default new Vuex.Store({
       state.visitedHeadline.push(payload);
     },
     setNews(state, payload) {
+      const source = payload.map((src) => src.source);
       state.news = payload;
+      state.source = source;
     },
     setSelectedHeadline(state, payload) {
       state.selectedHeadline = payload;
@@ -37,13 +43,25 @@ export default new Vuex.Store({
     setFilterList(state, payload) {
       state.filterList = payload;
     },
+    setFilteredResult(state, payload) {
+      // const fil = state.news.map((as) => as.source);
+      // const filt = fil.filter((y) => y.name.includes(payload));
+      const fil = state.news.filter((o) => Object.values(o.source).some((b) => b === payload));
+      console.log('fil: ', fil);
+      state.news = fil;
+    },
   },
   actions: {
     // for async
     async setNews(state) {
-      const api = await fetch(url, { headers });
-      const news = await api.json();
+      const newsApi = await axios.get(url);
+      const listApi = await axios.get(urlListSource);
+
+      const news = newsApi.data;
+      const list = listApi.data;
+
       state.commit('setNews', news.articles);
+      state.commit('setFilterList', list.sources);
     },
     async setSelectedHeadline(state, payload) {
       state.commit('setSelectedHeadline', payload);
@@ -59,11 +77,20 @@ export default new Vuex.Store({
       const result = await api.json();
       state.commit('setSearch', result.articles);
     },
-    async setFilterList(state) {
-      const api = await fetch(urlListSource, { headers });
-      const result = await api.json();
-      state.commit('setFilterList', result.sources);
+    async setFilteredResult(state, payload) {
+      state.commit('setFilteredResult', payload);
     },
+    // async setFilterList(state) {
+    // // const api = await fetch(urlListSource, { headers });
+    // // const result = await api.json();
+    // // state.commit('setFilterList', result.sources);
+
+    //   axios.get(urlListSource)
+    //     .then((response) => {
+    //       console.log('res; ', response);
+    //       state.commit('setFilterList', response.data.sources);
+    //     });
+    // },
   },
   modules: {
   },

@@ -23,7 +23,7 @@ export default {
   name: 'App',
   mounted() {
     this.$store.dispatch('setNews');
-    this.$store.dispatch('setFilterList');
+    // this.$store.dispatch('setFilterList');
   },
   components: {
     SearchBar,
