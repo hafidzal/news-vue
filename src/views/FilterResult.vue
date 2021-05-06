@@ -2,7 +2,7 @@
   <div class="result">
     <div v-if="result.length === 0">
       <center>
-      <h1>search not found.</h1>
+      <h1>sorry, not found.</h1>
       <p>
         <a href="/">Go home?</a>
       </p>
@@ -42,12 +42,7 @@ export default {
     };
   },
   mounted() {
-    this.result = this.$store.getters.getSearchResult;
-  },
-  computed: {
-    loading() {
-      return this.$store.getters.loading;
-    },
+    this.result = this.$store.getters.getFilterResult;
   },
 };
 </script>

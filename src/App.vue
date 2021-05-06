@@ -9,7 +9,7 @@
     <SearchBar></SearchBar>
     </v-app-bar>
     <v-main>
-      <v-container fluid>
+      <v-container>
         <router-view/>
       </v-container>
     </v-main>
@@ -18,18 +18,16 @@
 
 <script>
 import SearchBar from '@/components/SearchBar.vue';
+// import Spinner from 'vue-simple-spinner';
 
 export default {
   name: 'App',
   mounted() {
     this.$store.dispatch('setNews');
-    // this.$store.dispatch('setFilterList');
   },
   components: {
     SearchBar,
+    // vueSpinner: Spinner,
   },
-  data: () => ({
-    //
-  }),
 };
 </script>

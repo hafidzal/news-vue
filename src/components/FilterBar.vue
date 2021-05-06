@@ -1,6 +1,5 @@
 <template>
     <v-container fluid>
-        <h1>filter:</h1>
         <v-select
           v-model="selectFilter"
           :items="filterList"
@@ -11,7 +10,6 @@
           persistent-hint
           @change="handleFilter"
         ></v-select>
-        {{ selectFilter }}
     </v-container>
 </template>
 
@@ -31,7 +29,10 @@ export default {
   },
   methods: {
     handleFilter() {
-      this.$store.dispatch('setFilteredResult', this.selectFilter);
+      this.$store.dispatch('setFilteredResult', this.selectFilter)
+        .then(() => {
+          this.$router.push(`/filter/${this.selectFilter}`);
+        });
     },
   },
 };

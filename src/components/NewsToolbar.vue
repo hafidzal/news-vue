@@ -3,9 +3,6 @@
                 dense
                 flat
                 height="75">
-        <!-- <v-toolbar-side-icon @click="drawer = !drawer"
-            class="white--text">
-        </v-toolbar-side-icon> -->
         <v-toolbar-title>News App</v-toolbar-title>
         <v-spacer></v-spacer>
 
@@ -13,6 +10,7 @@
         class="ma-2"
         color="yellow darken-1"
         flat
+        @click="readMore"
       >
         Read More
         <v-icon
@@ -55,12 +53,15 @@
                             single-line
                             filled
                             v-model="title"
+                            :rules="[rules.required]"
+                            :counter="12"
+                            hint="Max. 12 characters"
                         ></v-text-field>
+                        <p>{{ errors }}</p>
                     </v-col>
                 </v-row>
             </v-container>
         </v-card-text>
-
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
@@ -87,6 +88,10 @@ export default {
       dialog: false,
       changeHeadline: '',
       title: '',
+      rules: {
+        required: (value) => !!value || 'Required.',
+      },
+      errors: '',
     };
   },
   methods: {
@@ -94,7 +99,19 @@ export default {
       this.$store.dispatch('setSelectedHeadline', this.selectedHeadline.title);
     },
     changeHeadlineTitle() {
-      this.$store.dispatch('changeHeadlineTitle', this.title);
+      if (!this.title) {
+        this.errors = 'Title required.';
+      } else if (this.title.length > 12) {
+        this.errors = 'Title max. 12 characters';
+      } else {
+        this.$store.dispatch('changeHeadlineTitle', this.title);
+      }
+    },
+    readMore() {
+      this.$router.push({
+        name: 'title',
+        query: { title: this.selectedHeadline.title, news: this.selectedHeadline },
+      });
     },
   },
 };

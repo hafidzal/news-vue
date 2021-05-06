@@ -11,25 +11,33 @@ const routes = [
     component: Home,
   },
   {
-    path: '/:title',
-    name: 'Detail',
+    path: 'title',
+    name: 'title',
     props: true,
-    component: () => import(/* webpackChunkName: "about" */ '../views/Detail.vue'),
+    component: () => import(/* webpackChunkName: "title" */ '../views/Detail.vue'),
   },
   {
     path: '/result/:keyword',
-    name: 'Result',
+    name: 'result',
     props: true,
-    component: () => import(/* webpackChunkName: "about" */ '../views/SearchResult.vue'),
+    component: () => import(/* webpackChunkName: "result" */ '../views/SearchResult.vue'),
   },
   {
-    path: '/visited',
-    name: 'Visited',
-    // component: Visited,
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Visited.vue'),
+    path: '/filter/:filterkey',
+    name: 'filter',
+    props: true,
+    component: () => import(/* webpackChunkName: "filter" */ '../views/FilterResult.vue'),
+  },
+  {
+    path: '/wrong-api',
+    name: 'wrong-api',
+    props: true,
+    component: () => import(/* webpackChunkName: "filter" */ '../views/WrongApi.vue'),
+  },
+  {
+    path: '*',
+    name: 'not-found',
+    component: () => import(/* webpackChunkName: "filter" */ '../views/NotFound.vue'),
   },
 ];
 
