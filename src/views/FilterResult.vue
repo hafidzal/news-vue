@@ -44,6 +44,11 @@ export default {
   mounted() {
     this.result = this.$store.getters.getFilterResult;
   },
+  methods: {
+    setVisitedHeadline(article) {
+      this.$store.dispatch('setVisitedHeadline', article.title);
+    },
+  },
 };
 </script>
 

@@ -8,7 +8,6 @@
       <v-btn
         class="ma-2"
         color="yellow darken-1"
-        flat
         depressed
         @click="readMore"
       >
@@ -80,7 +79,7 @@
 <script>
 export default {
   props: {
-    selectedHeadline: String,
+    selectedHeadline: Object,
   },
   data() {
     return {

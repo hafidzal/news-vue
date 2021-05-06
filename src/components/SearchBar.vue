@@ -7,7 +7,6 @@
             dense
             single-line
             prepend-inner-icon="mdi-magnify"
-            :value="search"
             type="search"
             label='Search..'
             @keyup.enter="handleSearch"
@@ -17,6 +16,7 @@
 
 <script>
 export default {
+  name: 'SearchBar',
   methods: {
     handleSearch(e) {
       this.$store.dispatch('setSearch', e.target.value)

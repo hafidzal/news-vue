@@ -17,7 +17,7 @@
 <script>
 
 export default {
-  name: 'Filter',
+  name: 'FilterBar',
   data() {
     return {
       selectFilter: [],
