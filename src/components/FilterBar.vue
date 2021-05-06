@@ -1,16 +1,17 @@
 <template>
-    <v-container fluid>
-        <v-select
-          v-model="selectFilter"
-          :items="filterList"
-          item-text="name"
-          :menu-props="{ maxHeight: '400' }"
-          label="Select"
-          hint="Pick your favorite source"
-          persistent-hint
-          @change="handleFilter"
-        ></v-select>
-    </v-container>
+  <v-select
+    v-model="selectFilter"
+    :items="filterList"
+    item-text="name"
+    :menu-props="{ maxHeight: '400'}"
+    label="Pick you favourite source news"
+    prepend-inner-icon="mdi-filter-variant"
+    persistent-hint
+    solo
+    outlined
+    flat
+    @change="handleFilter"
+  ></v-select>
 </template>
 
 <script>

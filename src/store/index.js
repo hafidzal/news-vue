@@ -4,7 +4,7 @@ import axios from 'axios';
 
 Vue.use(Vuex);
 
-const token = '1f5aea3b8fa34823aa7a8a82d2ee4d3a';
+const token = '671a19c4b28c40808acac74045cf38aa';
 const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${token}`;
 const urlListSource = `https://newsapi.org/v2/sources?apiKey=${token}`;
 const urlWrong = `https://newsapi.org/v2/sources?${token}`;

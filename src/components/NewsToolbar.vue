@@ -1,15 +1,15 @@
 <template>
-    <v-toolbar color="yellow"
+    <v-toolbar color="yellow lighten-2"
                 dense
                 flat
                 height="75">
-        <v-toolbar-title>News App</v-toolbar-title>
-        <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
 
       <v-btn
         class="ma-2"
         color="yellow darken-1"
         flat
+        depressed
         @click="readMore"
       >
         Read More
@@ -57,7 +57,7 @@
                             :counter="12"
                             hint="Max. 12 characters"
                         ></v-text-field>
-                        <p>{{ errors }}</p>
+                        <p class='caption red--text'>{{ errors }}</p>
                     </v-col>
                 </v-row>
             </v-container>
