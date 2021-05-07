@@ -1,4 +1,4 @@
-# news-vue
+# WML-News
 
 A news application, build using Vue, Vuetify and Vuex as state management.
 
@@ -12,12 +12,10 @@ A news application, build using Vue, Vuetify and Vuex as state management.
  - Spinner on every API Call
  - Implement mocha unit testing
 
-## Preview
+## Online Preview
 
+[https://wml-news.netlify.app](https://wml-news.netlify.app)
 
-```http
-  [https://wml-news.netlify.app](https://wml-news.netlify.app)
-```
 
 ## Project setup 
 ```
