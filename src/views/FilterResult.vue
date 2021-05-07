@@ -4,7 +4,7 @@
       <center>
       <h1>sorry, not found.</h1>
       <p>
-        <a href="/">Go home?</a>
+        <a href="/">Back home?</a>
       </p>
       </center>
     </div>
