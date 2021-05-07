@@ -1,6 +1,25 @@
 # news-vue
 
-## Project setup
+A news application, build using Vue, Vuetify and Vuex as state management.
+
+## Features
+
+ - Searching
+ - Filter based on source news
+ - History of visited pages
+ - Change title news
+ - Responsive both in Tablet and Phone
+ - Spinner on every API Call
+ - Implement mocha unit testing
+
+## Preview
+
+
+```http
+  [https://wml-news.netlify.app](https://wml-news.netlify.app)
+```
+
+## Project setup 
 ```
 yarn install
 ```
@@ -19,6 +38,11 @@ yarn build
 ```
 yarn lint
 ```
+
+### Unit testing
+```
+yarn test:unit
+````
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
